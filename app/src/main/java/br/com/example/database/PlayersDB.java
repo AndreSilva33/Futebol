@@ -2,8 +2,12 @@ package br.com.example.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.example.database.domain.Player;
 
@@ -67,5 +71,36 @@ public class PlayersDB extends SQLiteOpenHelper {
         }
     }
     // INSERIR JOGADOR NA TABELA
+
+    //BUSCAR JOGADORES
+    public List<Player> buscarPlayers(){
+        SQLiteDatabase db = getWritableDatabase();
+        try{
+            Cursor c = db.query(TABELA_PLAYERS,new String[]{PLAYERS_ID,PLAYERS_NOME, PLAYERS_POSICAO, PLAYERS_STATUS},
+                    null,null,null, null, PLAYERS_NOME + " ASC");
+
+            List<Player> players = new ArrayList<>();
+
+            if (c.moveToFirst()){
+                do{
+                    Player p = new Player();
+                    players.add(p);
+
+                    p.setId(c.getInt(c.getColumnIndex(PLAYERS_ID)));
+                    p.setNome(c.getString(c.getColumnIndex(PLAYERS_NOME)));
+                    p.setPosicao(c.getString(c.getColumnIndex(PLAYERS_POSICAO)));
+                    p.setStatus(c.getString(c.getColumnIndex(PLAYERS_STATUS)).equals("S"));
+
+                }while(c.moveToNext());
+
+            }
+            c.close();
+            return players;
+        }finally {
+            db.close();
+        }
+    }
+    //BUSCAR JOGADORES
     //PLAYERS
+
 }
