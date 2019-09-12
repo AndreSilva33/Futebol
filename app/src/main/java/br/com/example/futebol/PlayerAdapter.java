@@ -57,6 +57,10 @@ public class PlayerAdapter extends RecyclerView.Adapter <PlayersViewHolder> {
             @Override
             public boolean onLongClick(View v) {
 
+
+                // FAZER A MESMA COISA QUE O CLICKLISTENER
+                // SÓ Q EM DADOS TEM Q PASSAR MAIS UMA VARIALVEL PARA DIZER Q ESTÁ QUERNEDO EXCLUIR
+
                 return false;
             }
         });

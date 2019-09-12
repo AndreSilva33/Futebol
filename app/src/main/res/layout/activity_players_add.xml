@@ -146,4 +146,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/viewDivider" />
+
+
+    <!--faz um botão igual o save, só q com o id btnDelete-->
+
 </android.support.constraint.ConstraintLayout>

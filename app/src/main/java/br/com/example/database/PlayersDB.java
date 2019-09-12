@@ -122,6 +122,10 @@ public class PlayersDB extends SQLiteOpenHelper {
         }
     }
     //BUSCAR JOGADORES
+
+    // EXCLUIR UM JOGADOR
+        // fazer uma função para excluir um jogador
+    // EXCLUIR UM JOGADOR
     //PLAYERS
 
 }

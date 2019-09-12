@@ -24,6 +24,9 @@ public class AddPlayersActivity extends AppCompatActivity {
     String posSelect;
     Player playerSelected;
 
+    // CRIA A VARIAVEL BOOLEAN AQUI
+    // EX isDelete;
+
 
     @Override
     public void onCreate( Bundle savedInstanceState) {
@@ -93,6 +96,14 @@ public class AddPlayersActivity extends AppCompatActivity {
         });
         //RECEBENDO UM JOGADOR COMO PARAMETRO
         playerSelected = (Player) getIntent().getSerializableExtra("player");
+
+        // AQUI VC RECEBE A VARIAVEL Q VAI SER RESPONSAVEL POR TE DIZER SE TA EXCLUINDO
+        // PODE SER UMA VARIAVEL BOOLEAN,
+        // verifica se a variavel é true, se for, esconde o botão de cadastrar
+        // e mostra o botão de excluir
+        // fazer no layout (activity_players_add) um novo botão para excluir
+        //o botão começa gone, se a variavel vier true, vc mostra ele
+
         //SE VIER UM JOGADOR COMO PARAMETRO PREENCHE OS DADOS
         if (playerSelected != null){
             addFields();
