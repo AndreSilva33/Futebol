@@ -73,7 +73,24 @@ public class PlayersDB extends SQLiteOpenHelper {
     // INSERIR JOGADOR NA TABELA
 
     // ATUALIZANDO JOGADOR
-        //AQUI VC FAZ UMA FUÇÃO Q VAI PASSAR O JOGADOR EDITADO
+    public long updatePlayer(Player player){
+        SQLiteDatabase db = getWritableDatabase();
+        try{
+            ContentValues values = new ContentValues();
+            values.put(PLAYERS_NOME, player.getNome());
+            values.put(PLAYERS_POSICAO, player.getPosicao());
+            values.put(PLAYERS_STATUS, player.isStatus() ? "S" : "N");
+
+            String where = PLAYERS_ID +"=?";
+            String[] whereArgs = new String[]{String.valueOf(player.getId())};
+
+            return db.update(TABELA_PLAYERS, values, where, whereArgs);
+        }finally {
+            db.close();
+        }
+    }
+
+
     // ATUALIZANDO JOGADOR
 
     //BUSCAR JOGADORES

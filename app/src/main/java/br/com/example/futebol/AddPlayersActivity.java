@@ -22,6 +22,7 @@ public class AddPlayersActivity extends AppCompatActivity {
     Switch swStatus;
     Button btnCancel, btnSave;
     String posSelect;
+    Player playerSelected;
 
 
     @Override
@@ -58,20 +59,44 @@ public class AddPlayersActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateFields()){
-                    Player player = new Player();
-                    player.setNome(edtName.getText().toString());
-                    player.setPosicao(posSelect);
-                    player.setStatus(swStatus.isChecked());
-
                     PlayersDB db = new PlayersDB(getApplicationContext());
 
-                    if (db.insertPlayer(player) > 0){
-                        Toast.makeText(getApplicationContext(), "Salvo com sucesso", Toast.LENGTH_SHORT).show();
-                        finish();
+                    //VERIFICA SE VEIO ALGUM JOGADOR COMO PARAMETRO
+                    if (playerSelected != null){
+                        playerSelected.setNome(edtName.getText().toString());
+                        playerSelected.setPosicao(posSelect);
+                        playerSelected.setStatus(swStatus.isChecked());
+                        if (db.updatePlayer(playerSelected) > 0){
+                            Toast.makeText(getApplicationContext(), "Atualizado com sucesso", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                      //VERIFICA SE VEIO ALGUM JOGADOR COMO PARAMETRO
+                      //ADD
+                    }else{
+                        Player player = new Player();
+                        player.setNome(edtName.getText().toString());
+                        player.setPosicao(posSelect);
+                        player.setStatus(swStatus.isChecked());
+
+
+
+                        if (db.insertPlayer(player) > 0){
+                            Toast.makeText(getApplicationContext(), "Salvo com sucesso", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+
                     }
+                    //ADD
+
                 }
             }
         });
+        //RECEBENDO UM JOGADOR COMO PARAMETRO
+        playerSelected = (Player) getIntent().getSerializableExtra("player");
+        //SE VIER UM JOGADOR COMO PARAMETRO PREENCHE OS DADOS
+        if (playerSelected != null){
+            addFields();
+        }
 
     }
 
@@ -96,10 +121,17 @@ public class AddPlayersActivity extends AppCompatActivity {
 
         return true;
     }
-
-//    private void addFields(){
-//        edtName.setText(playersRecebido.getnome());
-//        ...
-//        //ASSIM POR DIANTE
-//    }
+    // FUNÇÃO QUE PEGA OS DADOS
+   private void addFields(){
+        edtName.setText(playerSelected.getNome());
+        if (playerSelected.getPosicao().equals("G")){
+            rbGoleiro.setChecked(true);
+            rblinha.setChecked(false);
+        }else{
+            rbGoleiro.setChecked(false);
+            rblinha.setChecked(true);
+        }
+        swStatus.setChecked(playerSelected.isStatus());
+    }
+    // FUNÇÃO QUE PEGA OS DADOS
 }

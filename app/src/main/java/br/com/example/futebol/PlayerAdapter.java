@@ -1,6 +1,9 @@
 package br.com.example.futebol;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +16,12 @@ import br.com.example.database.domain.Player;
 
 public class PlayerAdapter extends RecyclerView.Adapter <PlayersViewHolder> {
     List<Player> players;
-    Context mContext;
+    Activity mActivity;
 
-    public PlayerAdapter(List<Player> listPlayers, Context context){
+    public PlayerAdapter(List<Player> listPlayers, Activity activity){
 
         this.players = listPlayers;
-        this.mContext = context;
+        this.mActivity = activity;
     }
 
     @Override
@@ -41,11 +44,22 @@ public class PlayerAdapter extends RecyclerView.Adapter <PlayersViewHolder> {
 
                 // AQUI VC TEM CHAMAR A NOVA ACTIVITY PASSANDO O JOGADOR(CLASS PLAYER) COMO PARAMETRO
                 // PARA ISSO VC TEM Q SERIALIZAR A CLASSE PLAYER
+                Intent it = new Intent(mActivity, AddPlayersActivity.class);
+                Bundle dados = new Bundle();
+                dados.putSerializable("player",players.get(position));
+                it.putExtras(dados);
 
-                Toast.makeText(mContext, "Clickou item posicao " + players.get(position).getNome(), Toast.LENGTH_SHORT).show();
+               mActivity.startActivity(it);
             }
         });
 
+        holder.cdMain.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                return false;
+            }
+        });
     }
 
     @Override

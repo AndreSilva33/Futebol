@@ -1,6 +1,8 @@
 package br.com.example.database.domain;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
 
     int id;
     String nome, posicao;

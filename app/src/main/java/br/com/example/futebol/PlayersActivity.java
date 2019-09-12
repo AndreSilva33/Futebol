@@ -55,7 +55,7 @@ public class PlayersActivity extends AppCompatActivity {
             LinearLayoutManager layoutManager  = new LinearLayoutManager(this);
             rcvPlayers.setLayoutManager(layoutManager);
 
-            PlayerAdapter mAdapter = new PlayerAdapter(list, getApplicationContext());
+            PlayerAdapter mAdapter = new PlayerAdapter(list, this );
             rcvPlayers.setAdapter(mAdapter);
         }else{
             noResult.setVisibility(View.VISIBLE);
