@@ -72,6 +72,10 @@ public class PlayersDB extends SQLiteOpenHelper {
     }
     // INSERIR JOGADOR NA TABELA
 
+    // ATUALIZANDO JOGADOR
+        //AQUI VC FAZ UMA FUÇÃO Q VAI PASSAR O JOGADOR EDITADO
+    // ATUALIZANDO JOGADOR
+
     //BUSCAR JOGADORES
     public List<Player> buscarPlayers(){
         SQLiteDatabase db = getWritableDatabase();

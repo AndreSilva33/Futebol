@@ -30,6 +30,15 @@ public class AddPlayersActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_players_add);
 
+        // AQUI VC RECEBE AQUELE PARAMETRO Q VC PASSOU
+        // CRIA UMA VARIAVEL DA CLASSE PLAYER PRA RECEBER OS VALORES
+        // FAZ UMA COMPARACAO - SE A VARIAVEL TIVER NULA, VC FAZ COMO SE FOSSE CADASTRAR
+        // SE A VARIAVEL NÃO TIVER NULA VC FAZ OS CAMPOS RECEBER OS PARAMETROS Q VC RECEBEU
+        // EX
+//        if(playersRecebido != null){
+//            addFields();
+//        }
+
         edtName = findViewById(R.id.edtNome);
         rdgPosicao = findViewById(R.id.rdgPosicao);
         rbGoleiro = findViewById(R.id.rbGoleiro);
@@ -86,8 +95,11 @@ public class AddPlayersActivity extends AppCompatActivity {
         }
 
         return true;
-
-
-
     }
+
+//    private void addFields(){
+//        edtName.setText(playersRecebido.getnome());
+//        ...
+//        //ASSIM POR DIANTE
+//    }
 }

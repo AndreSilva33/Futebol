@@ -38,6 +38,10 @@ public class PlayerAdapter extends RecyclerView.Adapter <PlayersViewHolder> {
         holder.cdMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // AQUI VC TEM CHAMAR A NOVA ACTIVITY PASSANDO O JOGADOR(CLASS PLAYER) COMO PARAMETRO
+                // PARA ISSO VC TEM Q SERIALIZAR A CLASSE PLAYER
+
                 Toast.makeText(mContext, "Clickou item posicao " + players.get(position).getNome(), Toast.LENGTH_SHORT).show();
             }
         });
