@@ -2,5 +2,6 @@
     <string name="app_name">Futebol</string>
     <string name="player">Jogadores</string>
     <string name="no_result">Nenhum jogador encontrado</string>
+    <string name="no_result_presenca">Nenhum resultado</string>
 
 </resources>

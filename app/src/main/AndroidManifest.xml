@@ -16,9 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayersActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".players.PlayersActivity" android:screenOrientation="portrait"/>
 
-        <activity android:name=".AddPlayersActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".players.AddPlayersActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".presence.PresencaActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

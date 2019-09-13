@@ -1,4 +1,4 @@
-package br.com.example.futebol;
+package br.com.example.futebol.players;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;

@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import br.com.example.futebol.players.PlayersActivity;
+import br.com.example.futebol.presence.PresencaActivity;
+
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnPlayers;
+    private Button btnPlayers, btnPresenca;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +26,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, PlayersActivity.class));
             }
         });
+
+        btnPresenca = findViewById(R.id.btnPresenca);
+        btnPresenca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PresencaActivity.class));
+            }
+        });
     }
+
+
 
 
 

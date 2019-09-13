@@ -1,18 +1,17 @@
-package br.com.example.futebol;
+package br.com.example.futebol.players;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.List;
 
 import br.com.example.database.domain.Player;
+import br.com.example.futebol.R;
 
 public class PlayerAdapter extends RecyclerView.Adapter <PlayersViewHolder> {
     List<Player> players;
@@ -49,6 +48,8 @@ public class PlayerAdapter extends RecyclerView.Adapter <PlayersViewHolder> {
                 dados.putSerializable("player",players.get(position));
                 it.putExtras(dados);
 
+
+
                mActivity.startActivity(it);
             }
         });
@@ -57,9 +58,16 @@ public class PlayerAdapter extends RecyclerView.Adapter <PlayersViewHolder> {
             @Override
             public boolean onLongClick(View v) {
 
+                Intent it = new Intent(mActivity, AddPlayersActivity.class);
+                Bundle dados = new Bundle();
+                dados.putSerializable("player",players.get(position));
+                dados.putBoolean("delete",true);
+                it.putExtras(dados);
 
-                // FAZER A MESMA COISA QUE O CLICKLISTENER
-                // SÓ Q EM DADOS TEM Q PASSAR MAIS UMA VARIALVEL PARA DIZER Q ESTÁ QUERNEDO EXCLUIR
+
+
+
+                mActivity.startActivity(it);
 
                 return false;
             }
